@@ -8,16 +8,16 @@ public class BmiPublishServiceImpl implements BmiPublishService {
 		// TODO Auto-generated method stub
 		double convertedValue = 0;
 		
-		if(unit.equals("Kg")) {
+		if(unit.equalsIgnoreCase("Kg")) {
 			convertedValue = weight;
 		}
-		else if(unit.equals("g")) {
+		else if(unit.equalsIgnoreCase("g")) {
 			convertedValue = weight / 1000;
 		}
-		else if(unit.equals("lb")) {
+		else if(unit.equalsIgnoreCase("lb")) {
 			convertedValue = weight / 2.2046;
 		}
-		else if(unit.equals("t")) {
+		else if(unit.equalsIgnoreCase("t")) {
 			convertedValue = weight * 1000;
 		}
 		else {
@@ -37,21 +37,50 @@ public class BmiPublishServiceImpl implements BmiPublishService {
 	@Override
 	public double standardizedHeight(double height, String unit) {
 		// TODO Auto-generated method stub
-		return 0;
+		double convertedValue = 0;
+		
+		if(unit.equalsIgnoreCase("m")) {
+			convertedValue = height;
+		}
+		else if(unit.equalsIgnoreCase("cm")) {
+			convertedValue = height / 100;
+		}
+		else if(unit.equalsIgnoreCase("inches")) {
+			convertedValue = height * 2.54;
+		}
+		else if(unit.equalsIgnoreCase("km")) {
+			convertedValue = height * 1000;
+		}
+		else {
+			//invalid unit
+			return -1;
+		}
+		
+		if(convertedValue <= 0) {
+			//invalid input
+			return -2;
+		}
+		
+		return convertedValue;
 	}
 
 	//Function to calculate BMI
 	@Override
 	public double calculateBMI(double weight, double height) {
 		// TODO Auto-generated method stub
-		return 0;
+		double value = 0;
+		
+		value = weight / (height * height);
+		
+		return value;
 	}
 
 	//Function to provide health tips based of calculated bmi
 	@Override
-	public String suggestHealthTips(double bmi) {
+	public void suggestHealthTips(double bmi) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Suggest Health Tips");
+		System.out.println("Your BMI value is : " + bmi);
 	}
 
 	@Override
