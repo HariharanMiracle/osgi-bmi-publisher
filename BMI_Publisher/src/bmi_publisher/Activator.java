@@ -13,7 +13,7 @@ public class Activator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Publisher => Start service");
+		System.out.println("BMI Publisher => Start service");
 		BmiPublishService bmiPublishService = new BmiPublishServiceImpl();
 		publishServiceRegistration = context.registerService(BmiPublishService.class.getName(), bmiPublishService, null);
 	}
@@ -23,7 +23,7 @@ public class Activator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Publisher => Stop service");
+		System.out.println("BMI Publisher => Stop service");
 		publishServiceRegistration.unregister();
 	}
 
